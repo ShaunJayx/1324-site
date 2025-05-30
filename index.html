@@ -31,6 +31,7 @@
       border-radius: 12px;
       box-shadow: 0 4px 12px rgba(0,0,0,0.1);
       max-width: 600px;
+      z-index: 1;
     }
 
     .quote {
@@ -53,12 +54,28 @@
       width: 300px;
       opacity: 0.6;
     }
+
+    button {
+      margin-top: 20px;
+      padding: 10px 20px;
+      font-size: 1em;
+      border: none;
+      border-radius: 8px;
+      background: #333;
+      color: white;
+      cursor: pointer;
+    }
+
+    button:hover {
+      background: #555;
+    }
   </style>
 </head>
 <body>
   <div class="quote-box">
     <div id="quote" class="quote">Loading...</div>
     <div class="brand">1324</div>
+    <button onclick="newQuote()">New Quote</button>
   </div>
 
   <!-- Logo at the bottom of the page -->
@@ -176,6 +193,7 @@
       "Motivation is what gets you started. Discipline is what keeps you going.",
       "This is your time.",
       "1324 – I can do this."
+
     ];
 
     const colors = [
@@ -197,14 +215,17 @@
       "#117A65", "#2ECC71", "#E74C3C", "#2980B9", "#F39C12"
     ];
 
-    // Set random quote
-    const quoteEl = document.getElementById("quote");
-    const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
-    quoteEl.textContent = quotes[randomQuoteIndex];
+        function newQuote() {
+      const quoteEl = document.getElementById("quote");
+      const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+      const randomColorIndex = Math.floor(Math.random() * colors.length);
 
-    // Set random background color
-    const randomColorIndex = Math.floor(Math.random() * colors.length);
-    document.documentElement.style.setProperty('--bg-color', colors[randomColorIndex]);
+      quoteEl.textContent = quotes[randomQuoteIndex];
+      document.documentElement.style.setProperty('--bg-color', colors[randomColorIndex]);
+    }
+
+    // Run once on page load
+    newQuote();
   </script>
 </body>
 </html>
