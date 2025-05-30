@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>1324</title>
+  <style>
+    :root {
+      --bg-color: #f4f4f4;
+    }
+
+    body {
+      font-family: 'Helvetica Neue', sans-serif;
+      background-color: var(--bg-color);
+      color: #333;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin: 0;
+      padding: 20px;
+      text-align: center;
+      position: relative;
+      transition: background-color 0.5s ease;
+    }
+
+    .quote-box {
+      background: white;
+      padding: 30px 40px;
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      max-width: 600px;
+    }
+
+    .quote {
+      font-size: 1.5em;
+      font-weight: 500;
+    }
+
+    .brand {
+      margin-top: 15px;
+      font-size: 1.2em;
+      font-weight: bold;
+      color: #555;
+    }
+
+    .footer-logo {
+      position: absolute;
+      bottom: 60px;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 300px;
+      opacity: 0.6;
+    }
+  </style>
+</head>
+<body>
+  <div class="quote-box">
+    <div id="quote" class="quote">Loading...</div>
+    <div class="brand">1324</div>
+  </div>
+
+  <!-- Logo at the bottom of the page -->
+  <img src="logo.png" alt="1324 Logo" class="footer-logo" />
+
+  <script>
+    const quotes = [
+      "Believe you can and you're halfway there.",
+      "You are stronger than you think.",
+      "Every day is a second chance.",
+      "Don’t wait for opportunity. Create it.",
+      "Dream big. Start small. Act now.",
+      "Keep going. Everything you need will come to you.",
+      "Your only limit is your mind.",
+      "Doubt kills more dreams than failure ever will.",
+      "Push yourself, because no one else is going to do it for you.",
+      "Success doesn’t come from what you do occasionally, it comes from what you do consistently.",
+       "You are stronger than you think.",
+      "One small step at a time.",
+      "Don’t wait for the perfect moment — create it.",
+      "Fear is temporary. Regret lasts longer.",
+      "You’ve made it this far. Keep going.",
+      "Start where you are. Use what you have. Do what you can.",
+      "Progress, not perfection.",
+      "Doubt kills more dreams than failure ever will.",
+      "Believe in your own power.",
+      "Rise. Refocus. Repeat.",
+      "Fall seven times, stand up eight.",
+      "You can do hard things.",
+      "Success is built on consistency.",
+      "The only way out is through.",
+      "Show up — even when it’s hard.",
+      "Keep moving. Forward is forward.",
+      "Strength grows in the moments you think you can’t go on.",
+      "Today is a new chance.",
+      "Be proud of how far you've come.",
+      "I can do this. 1324.",
+      "The comeback is always stronger than the setback.",
+      "You’ve got this.",
+      "Keep showing up.",
+      "You’re closer than you think.",
+      "Let your courage be louder than your fear.",
+      "It always seems impossible until it's done.",
+      "Trust the process.",
+      "You are becoming the person you needed.",
+      "Small steps lead to big results.",
+      "Prove yourself to yourself, not others.",
+      "Strength doesn't come from what you can do. It comes from overcoming what you thought you couldn’t.",
+      "Hustle in silence, let success make the noise.",
+      "The effort today is the success of tomorrow.",
+      "Every day is a fresh start.",
+      "You don’t have to be perfect, just persistent.",
+      "Grow through what you go through.",
+      "Your potential is endless.",
+      "Dream big. Start small. Act now.",
+      "Confidence is a choice.",
+      "Don’t stop until you’re proud.",
+      "You can’t pour from an empty cup. Take care of yourself first.",
+      "Believe. Begin. Become.",
+      "Difficult roads often lead to beautiful destinations.",
+      "Keep going — your future self is watching.",
+      "You are not your mistakes.",
+      "Stay focused and never give up.",
+      "Doubt is the enemy of progress.",
+      "Let your dreams be bigger than your fears.",
+      "Fight for it.",
+      "Your only limit is your mind.",
+      "Create a life you can’t wait to wake up to.",
+      "Action beats anxiety.",
+      "Don't downgrade your dream to fit your reality.",
+      "Don’t quit. You're already in pain. Get a reward from it.",
+      "Discipline beats motivation.",
+      "Embrace the struggle.",
+      "Nothing changes if nothing changes.",
+      "You are capable. You are worthy.",
+      "Make yourself proud.",
+      "Mindset is everything.",
+      "Just because it's hard doesn’t mean you’re failing.",
+      "There is no elevator to success — take the stairs.",
+      "You’re not behind. You’re on your own path.",
+      "It’s not about having time, it’s about making time.",
+      "Stay patient and trust your journey.",
+      "One day or day one — you decide.",
+      "You don’t find willpower — you create it.",
+      "If you’re tired, learn to rest — not quit.",
+      "Strive for progress, not perfection.",
+      "Say yes to the challenge.",
+      "Even your smallest steps matter.",
+      "A little progress each day adds up to big results.",
+      "Don’t be afraid to shine.",
+      "You can rewrite your story.",
+      "Champions are made when no one is watching.",
+      "Get uncomfortable — that’s where growth lives.",
+      "Never settle for less than you’re capable of.",
+      "The goal is progress, not speed.",
+      "Be brave enough to be bad at something new.",
+      "You don’t have to feel ready to start.",
+      "Every accomplishment begins with the decision to try.",
+      "Keep grinding until your haters ask if you're hiring.",
+      "Be your own biggest fan.",
+      "Don’t let fear decide your future.",
+      "Great things take time — keep going.",
+      "Replace excuses with effort.",
+      "Never give up on something you can’t go a day without thinking about.",
+      "Show them what you’re made of.",
+      "Motivation gets you started. Habit keeps you going.",
+      "Hustle beats talent when talent doesn’t hustle.",
+      "Start now. Get better later.",
+      "Success is not for the chosen few — it’s for the few who choose it.",
+      "You don’t have to see the whole staircase, just take the first step.",
+      "Turn your “I wish” into “I will.”",
+      "Push yourself, because no one else is going to do it for you.",
+      "There’s greatness in you — let it out.",
+      "Focus on the step in front of you, not the whole staircase.",
+      "Motivation is what gets you started. Discipline is what keeps you going.",
+      "This is your time.",
+      "1324 – I can do this."
+    ];
+
+    const colors = [
+     
+      // Vibrant Colors
+      "#FF5733", "#FF6F61", "#FFC300", "#FF33F6", "#33FF57",
+      "#33C1FF", "#FF8C00", "#DAF7A6", "#C70039", "#900C3F",
+
+      // Pastel Colors
+      "#FADADD", "#C1F0F6", "#E6E6FA", "#FFDAB9", "#FFFACD",
+      "#F0FFF0", "#D1C4E9", "#B2EBF2", "#FFECB3", "#FBE9E7",
+
+      // Earth & Neutral Tones
+      "#A1887F", "#D7CCC8", "#F5F5F5", "#B0BEC5", "#8D6E63",
+      "#E0E0E0", "#A9A9A9", "#C0C0C0", "#FFFFFF", "#000000",
+
+      // Bold & Deep Colors
+      "#2C3E50", "#1ABC9C", "#34495E", "#7D3C98", "#D35400",
+      "#117A65", "#2ECC71", "#E74C3C", "#2980B9", "#F39C12"
+    ];
+
+    // Set random quote
+    const quoteEl = document.getElementById("quote");
+    const randomQuoteIndex = Math.floor(Math.random() * quotes.length);
+    quoteEl.textContent = quotes[randomQuoteIndex];
+
+    // Set random background color
+    const randomColorIndex = Math.floor(Math.random() * colors.length);
+    document.documentElement.style.setProperty('--bg-color', colors[randomColorIndex]);
+  </script>
+</body>
+</html>
